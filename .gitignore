@@ -38,3 +38,9 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+/target/
+
+##############################
+## OS X
+##############################
+.DS_Store

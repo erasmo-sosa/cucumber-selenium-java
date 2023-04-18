@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import AspirationPages.AspirationMain;
 import AspirationPages.OurProducts;
+import Utilities.OSUtils;
 
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,7 +39,17 @@ public class AspirationProductsValidations {
 
 		String projectLocation = System.getProperty("user.dir");
 		System.out.println("projectLocation: " + projectLocation);
-		System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver.exe");
+		switch (OSUtils.getOS()) {
+		
+			case WINDOWS:
+				System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver_win.exe");
+			case MAC:
+				System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver_mac");
+		}
+		//Windows Driver
+		//System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver_win.exe");
+		//Macos Driver
+		//System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver_mac");
 		driver = new ChromeDriver();	
 		//driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(shortWait,TimeUnit.SECONDS) ;			
